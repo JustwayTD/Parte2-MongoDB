@@ -1,7 +1,7 @@
 import pymongo
 from pymongo import MongoClient
 
-cluster = MongoClient("mongodb+srv://josel12:password@cluster0-rytv6.mongodb.net/slangs?retryWrites=true&w=majority")
+cluster = MongoClient("mongodb+srv://josel12:passsword@cluster0-rytv6.mongodb.net/slangs?retryWrites=true&w=majority")
 db = cluster["Slangs"]
 collection = db["slangs"]
 
@@ -23,12 +23,12 @@ def editaMoh(wordto,newmean):
     """Edits an already existing word from our database"""
     wordto.strip()
     newmean.strip()
-    search_word = collection.update_one({"Word":wordto} , {"$set":newmean})
+    collection.update_one({"Word":wordto} , {"$set":newmean})
     
 
 def eliminaMoh (word_todel):
     """Deletes certain word from our database"""
-    del_wor= collection.delete_one({"Word":word_todel})
+    collection.delete_one({"Word":word_todel})
     print("Perfecto! La palabra: ", word_todel," ha sido eliminada")
 
 def urbanDic():
